@@ -73,10 +73,17 @@ $( document ).ready(() => {
     $( 'form' ).on('submit', function() {
         if (usernameAccept && passwordAccept && emailAccept) {
 			console.log('Signup Successful!');
+			$( '.username' ).text($( '#username' ).val());
+			console.log($( '#username' ).val());
+			$( '#modalSignupSuccessful' ).modal('toggle');
+			usernameAccept = false;
+			passwordAccept = false;
+			emailAccept = false;
+			$('form').trigger("reset");
 		} else {
 			console.log('Signup Failed...')
 		}
 		
-		return false;
+		return false; // this causes the page to not reload
     });
 });
