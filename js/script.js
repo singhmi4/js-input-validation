@@ -23,34 +23,37 @@ $( document ).ready(() => {
 		
 		console.log($(this).val());
 		
-		[...($(this).val())].forEach(function(char) {
-			// check if character is capLetter
-			if (capLetterRegex.test(char)) {
-				console.log(char);
-				console.log(capLetterRegex.test(char));
-				--capLetterToken;
+		if ($(this).val().length === 13) {
+			[...($(this).val())].forEach(function(char) {
+				// check if character is capLetter
+				if (capLetterRegex.test(char)) {
+					console.log(char);
+					console.log(capLetterRegex.test(char));
+					--capLetterToken;
+				}
+				// check if character is symbol
+				if (symbolRegex.test(char)) {
+					console.log(char);
+					console.log(symbolRegex.test(char));
+					--symbolToken;
+				}
+				// check if character is hypen
+				if (hyphenRegex.test(char)) {
+					console.log(char);
+					console.log(hyphenRegex.test(char));
+					--hyphenToken;
+				}			
+			});
+
+			console.log(`Cap Letters Required: ${capLetterToken}`);
+			console.log(`Symbols Required: ${symbolToken}`);
+			console.log(`Hyphens Required: ${hyphenToken}`);
+
+			// check to see if tokens are equal to 0
+			if (capLetterToken === 0 && symbolToken === 0 && hyphenToken === 0) {
+				passwordAccept = true;
 			}
-			// check if character is symbol
-			if (symbolRegex.test(char)) {
-				console.log(char);
-				console.log(symbolRegex.test(char));
-				--symbolToken;
-			}
-			// check if character is hypen
-			if (hyphenRegex.test(char)) {
-				console.log(char);
-				console.log(hyphenRegex.test(char));
-				--hyphenToken;
-			}			
-		});
-		
-		console.log(`Cap Letters Required: ${capLetterToken}`);
-		console.log(`Symbols Required: ${symbolToken}`);
-		console.log(`Hyphens Required: ${hyphenToken}`);
-		
-		// check to see if tokens are equal to 0
-		if (capLetterToken === 0 && symbolToken === 0 && hyphenToken === 0) {
-			passwordAccept = true;
+
 		} else {
 			passwordAccept = false;
 		}
