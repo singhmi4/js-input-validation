@@ -23,6 +23,7 @@ $( document ).ready(() => {
 		
 		console.log($(this).val());
 		
+		// password must be equal to 13 
 		if ($(this).val().length === 13) {
 			[...($(this).val())].forEach(function(char) {
 				// check if character is capLetter
@@ -59,6 +60,14 @@ $( document ).ready(() => {
 		}
 		
 		console.log(passwordAccept);
+	});
+	
+	$( '#email' ).on('blur', function() {
+		const emailRegex = /^[a-z0-9_]*@gmail.com$/;
+		emailAccept = emailRegex.test($(this).val());
+		console.log($(this).val());
+		console.log(emailAccept);
+		
 	});
 
     $( '#submit' ).on('click', () => {
