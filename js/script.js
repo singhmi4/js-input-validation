@@ -70,9 +70,13 @@ $( document ).ready(() => {
 		
 	});
 
-    $( '#submit' ).on('click', () => {
-        console.log($( '#username' ).val());
-        console.log($( '#password' ).val());
-        console.log($( '#email' ).val());
+    $( 'form' ).on('submit', function() {
+        if (usernameAccept && passwordAccept && emailAccept) {
+			console.log('Signup Successful!');
+		} else {
+			console.log('Signup Failed...')
+		}
+		
+		return false;
     });
 });
