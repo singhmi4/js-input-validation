@@ -117,6 +117,18 @@ $( document ).ready(() => {
 			passwordAccept = false;
 			emailAccept = false;
 			$( '#submitHelp' ).css('display', 'none');
+			$( '#username' ).css('borderColor', '');
+			$( '#usernameHelp' ).addClass('text-muted');
+			$( '#usernameHelp' ).css('color', '');
+			$( '#usernameHelp' ).text('Must contain only alphabet letters.');
+			$( '#password' ).css('borderColor', '');
+			$( '#passwordHelp' ).addClass('text-muted');
+			$( '#passwordHelp' ).css('color', '');
+			$( '#passwordHelp' ).text('Must contain 5 capital letters, 6 symbols, and 2 hyphens.');
+			$( '#email' ).css('borderColor', '');
+			$( '#emailHelp' ).addClass('text-muted');
+			$( '#emailHelp' ).css('color', '');
+			$( '#emailHelp' ).text('Gmail addresses only.');
 			$('form').trigger("reset");
 		} else {
 			if (!usernameAccept) {
