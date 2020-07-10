@@ -12,22 +12,25 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h1>Sign Up Form</h1>
+      <h1>Sign Up Form - JS Validation</h1>
       <form action="#">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" class="form-control" id="username">
+		  <small id="usernameHelp" class="form-text text-muted">Must contain only alphabet letters.</small>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password">
+			<small id="passwordHelp" class="form-text text-muted">Must contain 5 capital letters, 6 symbols, and 2 hyphens.</small>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <small id="emailHelp" class="form-text text-muted">Gmail addresses only.</small>
         </div>
         <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+	  	<small id="submitHelp" class="form-text" style="display:none; color:#dc3545">Please correct the errors above and try again.</small>
       </form>
     </div>
 	  

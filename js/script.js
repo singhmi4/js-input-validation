@@ -4,12 +4,24 @@ $( document ).ready(() => {
 	let usernameAccept = false;
 	let passwordAccept = false;
 	let emailAccept = false;
+	const successMsg = 'Looks good!';
 	
 	$( '#username' ).on('blur', function() {
+		console.log($(this).val());
 		const usernameRegex = /^[a-zA-Z]+$/;
 		usernameAccept = usernameRegex.test($(this).val())
-		console.log($(this).val());
 		console.log(usernameAccept);
+		// Input Validation
+		$( '#usernameHelp' ).removeClass('text-muted');
+		if (usernameAccept) {
+			$(this).css('borderColor', '#28a745');
+			$( '#usernameHelp' ).css('color', '#28a745');
+			$( '#usernameHelp' ).text(successMsg);
+		} else {
+			$(this).css('borderColor', '#dc3545');
+			$( '#usernameHelp' ).css('color', '#dc3545');
+			$( '#usernameHelp' ).text('Must contain only alphabet letters.');
+		}
 	});
 	
 	$( '#password' ).on('blur', function() {
@@ -60,6 +72,19 @@ $( document ).ready(() => {
 		}
 		
 		console.log(passwordAccept);
+		
+		// Input Validation
+		$( '#passwordHelp' ).removeClass('text-muted');
+		if (passwordAccept) {
+			$(this).css('borderColor', '#28a745');
+			$( '#passwordHelp' ).css('color', '#28a745');
+			$( '#passwordHelp' ).text(successMsg);
+		} else {
+			$(this).css('borderColor', '#dc3545');
+			$( '#passwordHelp' ).css('color', '#dc3545');
+			$( '#passwordHelp' ).text('Must contain 5 capital letters, 6 symbols, and 2 hyphens.');
+		}
+		
 	});
 	
 	$( '#email' ).on('blur', function() {
@@ -67,6 +92,18 @@ $( document ).ready(() => {
 		emailAccept = emailRegex.test($(this).val());
 		console.log($(this).val());
 		console.log(emailAccept);
+		
+		// Input Validation
+		$( '#emailHelp' ).removeClass('text-muted');
+		if (emailAccept) {
+			$(this).css('borderColor', '#28a745');
+			$( '#emailHelp' ).css('color', '#28a745');
+			$( '#emailHelp' ).text(successMsg);
+		} else {
+			$(this).css('borderColor', '#dc3545');
+			$( '#emailHelp' ).css('color', '#dc3545');
+			$( '#emailHelp' ).text('Gmail addresses only.');
+		}
 		
 	});
 
@@ -79,8 +116,28 @@ $( document ).ready(() => {
 			usernameAccept = false;
 			passwordAccept = false;
 			emailAccept = false;
+			$( '#submitHelp' ).css('display', 'none');
 			$('form').trigger("reset");
 		} else {
+			if (!usernameAccept) {
+				$( '#username' ).css('borderColor', '#dc3545');
+				$( '#usernameHelp' ).removeClass('text-muted');
+				$( '#usernameHelp' ).css('color', '#dc3545');
+			}
+			
+			if (!passwordAccept) {
+				$( '#password' ).css('borderColor', '#dc3545');
+				$( '#passwordHelp' ).removeClass('text-muted');
+				$( '#passwordHelp' ).css('color', '#dc3545');
+			}
+			
+			if (!emailAccept) {
+				$( '#email' ).css('borderColor', '#dc3545');
+				$( '#emailHelp' ).removeClass('text-muted');
+				$( '#emailHelp' ).css('color', '#dc3545');
+			}
+			
+			$( '#submitHelp' ).css('display', 'block');
 			console.log('Signup Failed...')
 		}
 		
